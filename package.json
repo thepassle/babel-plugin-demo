@@ -1,0 +1,31 @@
+{
+  "name": "babel-plugin-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "babel-plugin-demo",
+  "scripts": {
+    "start": "babel --config-file ./config/babel.config.js ./demo/test-in.js --out-file ./demo/test-out.js && npm run format",
+    "format": "prettier \"demo/**/*.js\" --write"
+  },
+  "keywords": [
+    "babel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thepassle/babel-plugin-demo.git"
+  },
+  "author": "Pascal Schilp",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/parser": "^7.8.4",
+    "@babel/template": "^7.8.3",
+    "babel-literal-to-ast": "^2.1.0",
+    "node-sass": "^4.13.1"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.1.5",
+    "prettier": "^2.0.4"
+  }
+}
