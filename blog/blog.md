@@ -306,8 +306,6 @@ module.exports = babelPluginDemo;
 
 I also do a check to see if the `name` of this tagged template literal is `css`, since we only want to run Sass on the styles, and not on the `html` tagged template literal.
 
-<!-- Since tagged template literals give you an array of strings, we'll need to flatten those strings together, and _then_ call Sass on the result. -->
-
 If you're not familiar with how tagged template literals work, here's a very simple example. The _tag_ in a tagged template literal is really just a function, that gets an array of _strings_, and an array of _expressions_.
 
 ```js
