@@ -26,22 +26,21 @@ describe('integration tests', () => {
         sourceMap: false,
       };
 
-      const fixtureFile = path.join(beforeDir, testCase);
-      const fixture = fs.readFileSync(fixtureFile, 'utf-8');
+      const beforeFilePath = path.join(beforeDir, testCase);
+      const before = fs.readFileSync(beforeFilePath, 'utf-8');
 
-      const result = await babel.transformAsync(fixture, {
-        filename: fixtureFile,
+      const result = await babel.transformAsync(before, {
+        filename: beforeFilePath,
         ...config,
       });
  
-      const snapshotFile = path.join(afterDir, testCase).replace('.html', '.js');
-
-      if (!fs.existsSync(snapshotFile)) {
+      const afterFilePath = path.join(afterDir, testCase);
+      if (!fs.existsSync(afterFilePath)) {
         throw new Error('No snapshot found for ' + testCase);
       }
-      const snapshot = fs.readFileSync(snapshotFile, 'utf-8');
+      const after = fs.readFileSync(afterFilePath, 'utf-8');
 
-      expect(prettier.format(result.code, {parser: 'babel'})).to.equal(snapshot);
+      expect(prettier.format(result.code, {parser: 'babel'})).to.equal(after);
     });
   });
 });
