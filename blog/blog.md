@@ -13,7 +13,14 @@ And to me, Babel was also very much a black box. I had a grasp of what it does _
 
 ## _but_
 
-I was wrong! Babel is _fun_. There, I said it. Babel is an extremely powerful tool and writing plugins, surprisingly, isn't that hard. If I can do it, you can too! And in this blog I'll tell you all about it.
+I was wrong! Babel is _fun_. There, I said it. Babel is an extremely powerful tool. You can use it to:
+
+- Write 'codemods' to automatically move away from legacy APIs, or from an old framework to a new framework
+- Support non-standard or up and coming JavaScript features
+- Do build-time optimizations
+
+ And many, many more. And surprisingly, writing babel plugins, is not that hard. If I can do it, you can too! And in this blog I'll tell you all about it.
+
 
 ## Opening The Black Box
 
@@ -52,7 +59,7 @@ Would you say this is an identifier?
 
 > it takes a parameter, named `n`
 
-Does it only take only one parameter? And would you say the identifier is `n`?
+Does it take only one parameter? And would you say the identifier is `n`?
 
 > the function returns something
 
@@ -356,7 +363,7 @@ function babelPluginDemo({ types: t }) {
           // `quasis` is an array of objects, so we naively join them together
           const styleStrings = path.node.quasi.quasis.map(quasi => quasi.value.raw).join('')
 
-          // Now that we have all our styles into a single string, we can run Sass against it, and stringify if again
+          // Now that we have all our styles into a single string, we can run Sass against it, and stringify it again
           const sassifiedStyles = sass.renderSync({
             data: styleStrings
           }).css.toString();
@@ -461,7 +468,7 @@ Keep track of any assumptions you make in a document, it can really help you out
 
 I generally don't practice TDD, but while writing a babel plugin, I found myself clinging on to my unit tests for dear life, and a great tool to stay confident that my code kept working as intended.
 
-I also wrote a lot of integration tests. I kept a 'before' and 'after' folder with files for the various transformations I did on the code. In my test, I would simply run the babel plugin on the 'before' files, and compare the result of that with the 'after' (the 'expected' result) files. Not only does it give you the confidence things dont break after you make changes, it's also great documentation!
+I also wrote a lot of integration tests. I kept a 'before' and 'after' folder with files for the various transformations I did on the code. In my test, I would simply run the babel plugin on the 'before' files, and compare the result of that with the 'after' (the 'expected' result) files. Not only does it give you the confidence things don't break after you make changes, it's also great documentation!
 
 Make sure to check out the demo repo to see the [testing setup](https://github.com/thepassle/babel-plugin-demo/tree/master/test)
 
