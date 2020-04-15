@@ -4,8 +4,9 @@
   "description": "",
   "main": "babel-plugin-demo",
   "scripts": {
-    "start": "babel --config-file ./config/babel.config.js ./demo/test-in.js --out-file ./demo/test-out.js && npm run format",
-    "format": "prettier \"demo/**/*.js\" --write"
+    "start": "babel --config-file ./config/babel.config.js ./demo/test-in.js --out-file ./demo/test-out.js",
+    "format": "prettier \"demo/**/*.js\" --write",
+    "test": "mocha test/**/*.test.js"
   },
   "keywords": [
     "babel"
@@ -21,11 +22,12 @@
     "@babel/core": "^7.8.4",
     "@babel/parser": "^7.8.4",
     "@babel/template": "^7.8.3",
-    "babel-literal-to-ast": "^2.1.0",
     "node-sass": "^4.13.1"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.5",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
     "prettier": "^2.0.4"
   }
 }
