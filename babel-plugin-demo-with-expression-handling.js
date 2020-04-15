@@ -1,16 +1,33 @@
 const sass = require('node-sass');
 
 /**
- Handles:
+Handles:
 
-  nav {
-    ul {
-      background-color: ${bgCol};
-      margin: ${margin}; // js variables
-      padding: ${0}; // 'raw' values
-      list-style: none;
-    }
+const padding = 0;
+const textCol = "black";
+
+class MyDemo extends LitElement {
+  static get styles() {
+    return css`
+      $base-color: #c6538c;
+      $border-dark: rgba($base-color, 0.88);
+
+      .alert {
+        border: 1px solid $border-dark;
+      }
+
+      nav {
+        ul {
+          ${mixin()}
+          background-color: ${"red"};
+          margin: ${0};
+          padding: ${padding};
+          list-style: none;
+        }
+      }
+    `;
   }
+}
 
 */
 
@@ -28,7 +45,13 @@ function babelPluginDemo({ types: t }) {
             // we need this because sass wont be able to sass-ify the expressions
             // we'll later replace the placeholder values with their originals
             if (!path.node.quasi.quasis[i].tail) {
-              result += `#{"/*placeholder${i}*/"}`;
+              const isCallExpression = path.node.quasi.expressions[i].type === 'CallExpression';
+              if(isCallExpression) {
+                // use a different placeholder if its a function, or a 'mixin' function, Sass requires it to be valid CSS
+                result += `color: var(__PLACEHOLDER${i});`;
+              } else {
+                result += `#{"/*placeholder${i}*/"}`;
+              }
             }
           }
 
@@ -43,8 +66,19 @@ function babelPluginDemo({ types: t }) {
               // if an expression has a name, that means its a variable
               sassifiedStyles = sassifiedStyles.replace(`/*placeholder${j}*/`, '${'+ path.node.quasi.expressions[j].name +'}')
             } else {
-              // if an expression doesnt have a name, that means its just a value
-              sassifiedStyles = sassifiedStyles.replace(`/*placeholder${j}*/`, '${'+ path.node.quasi.expressions[j].value +'}')
+
+              const isString = path.node.quasi.expressions[j].type === 'StringLiteral';
+              const isCallExpression = path.node.quasi.expressions[j].type === 'CallExpression';
+              if(isString) {
+                // if the expression is a string, we have to handle that
+                sassifiedStyles = sassifiedStyles.replace(`/*placeholder${j}*/`, '${'+ path.node.quasi.expressions[j].extra.raw +'}')
+              } else if (isCallExpression){
+                // if the expression is a function, we want to call it
+                sassifiedStyles = sassifiedStyles.replace(`color: var(__PLACEHOLDER${j});`, '${'+ path.node.quasi.expressions[j].callee.name +'()}')
+              } else {
+                // if the expression is a number/boolean, we can just place the value
+                sassifiedStyles = sassifiedStyles.replace(`/*placeholder${j}*/`, '${'+ path.node.quasi.expressions[j].value +'}')
+              }
             }
           }
 
