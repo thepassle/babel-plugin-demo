@@ -4,7 +4,7 @@
   "description": "",
   "main": "babel-plugin-demo",
   "scripts": {
-    "start": "babel --config-file ./config/babel.config.js ./demo/test-in.js --out-file ./demo/test-out.js",
+    "start": "babel --config-file ./config/babel.config.js ./demo/test-in.js --out-file ./demo/test-out.js && npm run format",
     "format": "prettier \"demo/**/*.js\" --write",
     "test": "mocha test/**/*.test.js"
   },
