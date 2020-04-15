@@ -463,6 +463,8 @@ I generally don't practice TDD, but while writing a babel plugin, I found myself
 
 I also wrote a lot of integration tests. I kept a 'before' and 'after' folder with files for the various transformations I did on the code. In my test, I would simply run the babel plugin on the 'before' files, and compare the result of that with the 'after' (the 'expected' result) files. Not only does it give you the confidence things dont break after you make changes, it's also great documentation!
 
+Make sure to check out the demo repo to see the [testing setup](https://github.com/thepassle/babel-plugin-demo/tree/master/test)
+
 ### Types
 
 Starting out, I wrote everything in good ol' plain JavaScript. At some point I really found myself wanting more confidence/security, so I started using JSDoc types. It really helps keep track of which types of Nodes you're working with, and the autocompletion/suggestions in VS Code are a godsend.

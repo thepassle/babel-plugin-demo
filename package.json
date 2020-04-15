@@ -21,7 +21,6 @@
     "@babel/core": "^7.8.4",
     "@babel/parser": "^7.8.4",
     "@babel/template": "^7.8.3",
-    "babel-literal-to-ast": "^2.1.0",
     "node-sass": "^4.13.1"
   },
   "devDependencies": {
