@@ -476,7 +476,7 @@ Starting out, I wrote everything in good ol' plain JavaScript. At some point I r
 
 ## Resources
 
-Finally, I'd like to share some resources that I found to be extremely variable while working with Babel
+Finally, I'd like to share some resources that I found to be extremely valuable while working with Babel
 
 - ASTExplorer
 https://astexplorer.net/
