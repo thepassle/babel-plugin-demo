@@ -7,7 +7,7 @@ tags: babel, plugin
 
 > **TL;DR:** Babel plugins are fun. Want to look at some code instead? You can find the example plugin repo [here](https://github.com/thepassle/babel-plugin-demo).
 
-Many developers will be familiar with Babel, wether you've used it while setting up a project, or tweaking existing configurations, im sure most of us have had to deal with Babel at some point in our careers. And I think it's safe to say that for many of us, it probably wasn't a great experience. Babel errors are hard to debug, hard to google, and frankly, usually a bother.
+Many developers will be familiar with Babel, whether you've used it while setting up a project, or tweaking existing configurations, I'm sure most of us have had to deal with Babel at some point in our careers. And I think it's safe to say that for many of us, it probably wasn't a great experience. Babel errors are hard to debug, hard to google, and frankly, usually a bother.
 
 And to me, Babel was also very much a black box. I had a grasp of what it does _conceptually_, but I've always refrained from going very in depth into it, because I thought: "This probably isn't for me, this stuff is way too advanced, it must just be some kind of voodoo magic". 
 
