@@ -1,6 +1,6 @@
 # Babel-plugin-demo
 
-This repo is an example repo to follow along to the blogpost TODO.
+This repo is an example repo to follow along to the blogpost [Babel, Beyond Assumptions](https://medium.com/ing-blog/babel-beyond-assumptions-cf04b2dc1006).
 
 ## Usage
 
